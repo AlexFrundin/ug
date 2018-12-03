@@ -1,0 +1,66 @@
+{% extends "app/base_site.html" %}
+
+{% block title %} Media Gallery {% endblock title %}
+
+{% block stylesheets %}
+  {{ block.super }}
+{% endblock stylesheets %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+      <div class="page-title">
+        <div class="title_left">
+          <h3> Items list <small> List of all your items</small> </h3>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="x_panel">
+
+            <div class="x_content">
+
+              <div class="row">
+
+
+                <div class="col-md-55">
+                  <div class="thumbnail">
+                    <a href="/createitem" >   <img  display: block;" src="/static/images/addbutton.png"  width="190px" alt="image" /></a>
+                  </div>
+                </div>
+
+                {% for i in items %}
+                <div class="col-md-55">
+                  <div class="thumbnail">
+                    <div class="image view view-first">
+                      <img style="width: 100%; display: block;" src="/media/{{ i.main_img }}" alt="image" />
+                      <div class="mask">
+                        <p> Control</p>
+                        <div class="tools tools-bottom">
+                            <a href="/edititem/{{ i.id }}" title="Edit item"><i class="fa fa-pencil"></i></a>
+                            <a href="/reservedate/{{ i.id }}" title="Reserve days"><i class="fa fa-lock"></i></a>
+                            <a href="/deactivate/{{ i.id }}" title="Deactivate item"><i class="fa fa-times"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                                        <div class="caption" style="line-height:1;"><p><b>{{ i.title }}</b></p><p>status: <b style="color:{{ i.scolor }};"> {{ i.status }}</b> </p><p>  price: {{ i.price }}{% if i.currency == 'USD' %}${% endif %} <span style="color:#2a3f54";><b>  </b></span></p></div>
+                  </div>
+                </div>
+
+                  {% endfor %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super }}
+{% endblock javascripts %}

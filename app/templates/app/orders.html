@@ -1,0 +1,88 @@
+{% extends "app/base_site.html" %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>All orders </h2>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+
+
+
+              <div class="table-responsive">
+                <table class="table table-striped jambo_table ">
+                  <thead>
+                    <tr class="headings">
+
+                      <th class="column-title">ID </th>
+                      <th class="column-title">Order Date </th>
+                      <th class="column-title">Product </th>
+                      <th class="column-title">Description </th>
+                      <th class="column-title">Buyer Name </th>
+                      <th class="column-title">Amount </th>
+                      <th class="column-title no-link last"><span class="nobr">Delivery adress</span>
+                      </th>
+                      <th class="column-title">Status </th>
+                      <th class="column-title">Action </th>
+
+
+
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                  {% for i in data %}
+                      {% if forloop.counter|divisibleby:2 %}
+                      <tr class="odd pointer">
+                      {% else %}
+                    <tr class="even pointer">
+                    {% endif %}
+
+                      <td class=" ">{{ i.id }}</td>
+                      <td class=" ">{{ i.date }}</td>
+                      <td class=" "><img style="width: 150px; display: block;" src="/media/{{ i.img }}" alt="image" /></td>
+                    < class=" ">
+                    {%if i.description_img%}
+                    <img style="width: 150px; display: block;" src="/media/{{ i.description_img }}" alt="image" /> </br>
+                    {%endif%}
+                    {{i.description}}</br>
+                        Adult count:{{ i.count }}</br>
+                        Kids count: {{ i.count_kids }}
+                    </td>
+                    <td class=" ">{{ i.buyer_fullname }} </br>{{i.sex}} </br> {{i.buyer_phone}}  </br> {{i.city}}  </br>Birthday: {{i.birthday}}</td>
+
+                      <td class="a-right a-right ">{{ i.price }} {{ i.currency }}</td>
+                    <td class=" last">{{ i.delivery_adress }} </br> {{i.delivery_datetime}}</td>
+                     <td class=" ">
+                       {%if i.status%}
+                       Finished
+                       {% else %}
+                       In process
+                       {% endif %}
+                     </td>
+                    <td class=" "><a href="/acceptorder/{{i.id}}"> <li class="fa fa-check-square " style="color: green;">Complete</li> </a></td>
+                    </tr>
+                  {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+{% endblock content %}

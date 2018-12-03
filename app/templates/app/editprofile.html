@@ -1,0 +1,61 @@
+{% extends "app/base_site.html" %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Edit profile</h2>
+
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <br />
+              <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data" method="post" action="/editprofilehandle">
+                   {% csrf_token %}
+
+                  <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">First Name</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="fname" value="{{ user.first_name }}" class="form-control col-md-7 col-xs-12" type="text" name="fname">
+                      </div>
+                    </div>
+                  <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Second Name</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="sname" value="{{ user.last_name }}" class="form-control col-md-7 col-xs-12" type="text" name="sname">
+                      </div>
+                    </div>
+
+                  <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Main photo</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="upload" class="form-control col-md-7 col-xs-12" type="file" name="upload">
+                      </div>
+                    </div>
+                <div class="ln_solid"></div>
+
+
+
+
+
+                    <div class="form-group">
+                  <div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-4">
+
+                    <button style="width: 300px; height: 60px; margin-top: 50px;" type="submit" class="btn btn-success">Save</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+{% endblock content %}

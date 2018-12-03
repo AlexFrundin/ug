@@ -1,0 +1,77 @@
+{% extends "app/base_site.html" %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>All orders </h2>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+
+
+
+              <div class="table-responsive">
+                <table class="table table-striped jambo_table ">
+                  <thead>
+                    <tr class="headings">
+
+                      <th class="column-title">ID </th>
+                      <th class="column-title">Order Date </th>
+                      <th class="column-title">Name of Vendor </th>
+                      <th class="column-title">Product ID </th>
+                      <th class="column-title">Count </th>
+                      <th class="column-title">Buyer Name </th>
+                      <th class="column-title">Delivery adress </th>
+                      <th class="column-title">Status </th>
+                      <th class="column-title">Amount </th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {% for i in data %}
+                      {% if forloop.counter|divisibleby:2 %}
+                      <tr class="odd pointer">
+                      {% else %}
+                    <tr class="even pointer">
+                    {% endif %}
+
+                      <td class=" ">{{ i.id }}</td>
+                      <td class=" ">{{ i.date }}</td>
+                      <td class=" ">{{ i.vendor }} </br> {{i.vendorphone}}</td>
+                      <td class=" ">{{ i.itemid }}</td>
+                    <td class=" ">adult: {{ i.count }}</br>kids: {{ i.count_kids }}</td>
+                      <td class=" ">{{ i.buyer_fullname }} </br> {{i.buyer_phone}}</td>
+                      <td class=" ">{{ i.delivery_adress }}</br> {{i.delivery_datetime}}</td>
+                      <td class=" "> {%if i.status%}
+                       Finished
+                       {% else %}
+                       In process
+                       {% endif %}</td>
+                      <td class="a-right a-right ">{{ i.price }} {{ i.currency }}</td>
+                      </td>
+                    </tr>
+                  {% endfor %}
+
+
+
+                  </tbody>
+                </table>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+{% endblock content %}

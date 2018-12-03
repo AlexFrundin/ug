@@ -1,0 +1,220 @@
+{% extends "app/base_site.html" %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Create new set</h2>
+
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <br />
+              <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data" method="post" action="/handlesetcreate">
+                   {% csrf_token %}
+              <div class="col-md-6">
+                  <div class="form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Country<span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <select class="form-control" id="country" name="country">
+                      <option>Choose country</option>
+                        {% for i in countries %}
+                      <option>{{ i.name }}</option>
+                        {% endfor %}
+
+                    </select>
+                  </div>
+                </div>
+                  <div class="form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">City<span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <select class="form-control" name="region" id="region">
+                      <option>Choose region</option>
+                     {% for i in regions %}
+                      <option>{{ i.reg_name }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                  <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Price</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="price" class="form-control col-md-7 col-xs-12" type="text" name="price">
+                      </div>
+                    </div>
+                  <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Delivery price</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input  id="delprice" class="form-control col-md-7 col-xs-12" type="text" name="delprice">
+                      </div>
+                    </div>
+                  <div class="form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Currency <span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <select class="form-control" name="currency" id="currency">
+                      <option>Choose currency</option>
+                        {% for i in currencies %}
+                      <option>{{ i.iso_4217 }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                  <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Main photo</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="upload" class="form-control col-md-7 col-xs-12" type="file" name="upload">
+                      </div>
+                    </div>
+              </div>
+
+              <div class="col-md-6">
+
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                    <select class="form-control" name="item1" id="item1">
+                      <option>Choose item</option>
+                     {% for i in items %}
+                      <option>{{ i.title }} ID:{{ i.id }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                    <select class="form-control" name="item2" id="item2">
+                      <option>Choose item</option>
+                     {% for i in items %}
+                      <option>{{ i.title }} ID:{{ i.id }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                    <select class="form-control" name="item3" id="item3">
+                      <option>Choose item</option>
+                     {% for i in items %}
+                      <option>{{ i.title }} ID:{{ i.id }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                    <select class="form-control" name="item4" id="item4">
+                      <option>Choose item</option>
+                     {% for i in items %}
+                      <option>{{ i.title }} ID:{{ i.id }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                    <select class="form-control" name="item5" id="item5">
+                      <option>Choose item</option>
+                     {% for i in items %}
+                      <option>{{ i.title }} ID:{{ i.id }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                    <select class="form-control" name="item6" id="item6">
+                      <option>Choose item</option>
+                     {% for i in items %}
+                      <option>{{ i.title }} ID:{{ i.id }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                    <select class="form-control" name="item7" id="item7">
+                      <option>Choose item</option>
+                     {% for i in items %}
+                      <option>{{ i.title }} ID:{{ i.id }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                    <select class="form-control" name="item8" id="item8">
+                      <option>Choose item</option>
+                     {% for i in items %}
+                      <option>{{ i.title }} ID:{{ i.id }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                    <select class="form-control" name="item9" id="item9">
+                      <option>Choose item</option>
+                     {% for i in items %}
+                      <option>{{ i.title }} ID:{{ i.id }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                    <select class="form-control" name="item10" id="item10">
+                      <option>Choose item</option>
+                     {% for i in items %}
+                      <option>{{ i.title }} ID:{{ i.id }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+
+              </div>
+
+
+                <div class="ln_solid"></div>
+
+
+
+                  <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <h2 style="text-align: center;">For English Version</h2>
+
+                  <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">title</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="ent" class="form-control col-md-7 col-xs-12" type="text" name="ent">
+                      </div>
+                    </div>
+                  <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                    <textarea id="endes" class="form-control" rows="4" name="endes"></textarea>
+                  </div>
+                    </div>
+
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                         <h2 style="text-align: center;">For Arabic Version</h2>
+                  <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">title</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="art" class="form-control col-md-7 col-xs-12" type="text" name="art">
+                      </div>
+                    </div>
+                  <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                    <textarea id="ardes" name="ardes" class="form-control" rows="4" ></textarea>
+                  </div>
+                    </div>
+
+                    </div>
+                  </div>
+
+                    <div class="form-group">
+                  <div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-4">
+
+                    <button style="width: 300px; height: 60px; margin-top: 50px;" type="submit" class="btn btn-success">Save</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+{% endblock content %}

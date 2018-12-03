@@ -1,0 +1,74 @@
+{% extends "app/base_site.html" %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Users list</h2>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+
+
+
+              <div class="table-responsive">
+                <table class="table table-striped jambo_table ">
+                  <thead>
+                    <tr class="headings">
+
+                      <th class="column-title">ID </th>
+                      <th class="column-title">Phone Number</th>
+                      <th class="column-title">Full name</th>
+                      <th class="column-title">Status</th>
+                      <th class="column-title">Action</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>{% for i in users %}
+                      {% if forloop.counter|divisibleby:2 %}
+                      <tr class="odd pointer">
+                      {% else %}
+                    <tr class="even pointer">
+                    {% endif %}
+
+                      <td class=" ">{{ i.id }}</td>
+                      <td class=" ">{{ i.phone }}</td>
+                      <td class=" ">{{ i.first_name }} {{ i.last_name }}</td>
+                      <td class=" ">
+                      {% if i.is_active %}
+                          {% if i.is_admin %}
+                            <span style="color: rebeccapurple;">Admin</span>
+                          {% else %}
+                            <span style="color: green;">Active</span>
+                          {% endif %}
+                      {% else %}
+                          <span style="color: red;">Banned</span>
+                      {% endif %}
+                      </td>
+                      <td class=" ">
+                          <a href="/ban/{{ i.id }}"><i class="fa fa-lock" style="color: red" aria-hidden="true"></i>Ban</a>
+                          <a href="/unban/{{ i.id }}"><i class="fa fa-unlock" style="color: green" aria-hidden="true"></i>UnBan</a>
+                      </td>
+                        {% endfor %}
+
+
+                  </tbody>
+                </table>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,59 @@
+{% extends "app/base_site.html" %}
+
+{% block title %} Login {% endblock title %}
+
+{% block stylesheets %}
+  {{ block.super }}
+  <!-- Animate.css -->
+  <link href="/static/vendors/animate.css/animate.min.css" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block body_class %}login{% endblock body_class %}
+
+{% block body %}
+  <div>
+    <a class="hiddenanchor" id="signup"></a>
+    <a class="hiddenanchor" id="signin"></a>
+
+    <div class="login_wrapper">
+      <div class="animate form login_form">
+        <section class="login_content">
+          <form method="post" action="/confirm">
+              {% csrf_token %}
+            <h1>Enter your code</h1>
+              <h2>{{ message }}</h2>
+            <div>
+              <input type="text" name="code" class="form-control" placeholder="code" required="true" />
+            </div>
+            <div>
+              <input type="hidden" name="phone" class="form-control" value="{{ phone }}" required="" />
+            </div>
+            <div>
+              <button type="submit" class="btn btn-default submit" >Confirm</button>
+              <a class="reset_pass" href="#">Lost your password?</a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="separator">
+              <p class="change_link">New to site?
+                <a href="#signup" class="to_register"> Create Account </a>
+              </p>
+
+              <div class="clearfix"></div>
+              <br />
+
+              <div>
+                <h1><i class="fa fa-paw"></i> U Gather!</h1>
+                <p>©2017 All Rights Reserved. U Gather! Privacy and Terms</p>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+
+
+    </div>
+  </div>
+{% endblock body %}
+

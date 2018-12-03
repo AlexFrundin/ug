@@ -1,0 +1,98 @@
+{% extends "app/base_site.html" %}
+
+{% block title %} Login {% endblock title %}
+
+{% block stylesheets %}
+  {{ block.super }}
+  <!-- Animate.css -->
+  <link href="/static/vendors/animate.css/animate.min.css" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block body_class %}login{% endblock body_class %}
+
+{% block body %}
+  <div>
+    <a class="hiddenanchor" id="signup"></a>
+    <a class="hiddenanchor" id="signin"></a>
+
+    <div class="login_wrapper">
+      <div class="animate form login_form">
+        <section class="login_content">
+          <form method="post" action="/login">
+            {% csrf_token %}
+            <h1>Login Form</h1>
+            <h2>{{ message }}</h2>
+            <div>
+              <input type="text" name="phone" class="form-control" placeholder="Phone number" required="true" />
+              <input type="password" name="password" class="form-control" placeholder="password" required="true" />
+              <input type="hidden" name="formtype" class="form-control" value="login" />
+            </div>
+            <div>
+   <button type="submit" class="btn btn-default submit" >Submit</button>
+                <a class="reset_pass" href="#">Lost your password?</a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="separator">
+              <p class="change_link">New to site?
+                <a href="#signup" class="to_register"> Create Account </a>
+              </p>
+
+              <div class="clearfix"></div>
+              <br />
+
+              <div>
+                <h1><i class="fa fa-paw"></i> U Gather!</h1>
+                <p>©2017 All Rights Reserved. U Gather! Privacy and Terms</p>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <div id="register" class="animate form registration_form">
+        <section class="login_content">
+          <form action="/login" method="post">
+              {% csrf_token %}
+            <h1>Create Account</h1>
+            <div>
+              <input type="text" name="phone" class="form-control" placeholder="Phone number" required="" />
+            </div>
+            <div>
+              <input type="text" name="firstname" class="form-control" placeholder="First name" required="" />
+            </div>
+            <div>
+              <input type="text" name="lastname" class="form-control" placeholder="Last name" required="" />
+            </div>
+            <div>
+              <input type="password" name="password" class="form-control" placeholder="password" required="" />
+            </div>
+                            <input type="hidden" name="formtype" class="form-control" value="register" />
+
+            <div>
+              <button type="submit" class="btn btn-default submit" >Submit</button>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="separator">
+              <p class="change_link">Already a member ?
+                <a href="#signin" class="to_register"> Log in </a>
+              </p>
+
+              <div class="clearfix"></div>
+              <br />
+
+              <div>
+                <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+{% endblock body %}
+

@@ -1,0 +1,78 @@
+{% extends "app/base_site.html" %}
+{% load static %}
+{% block stylesheets %}
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+{% endblock stylesheets %}
+
+{% block content %}
+<script src="{% static 'js/datepicker.min.js' %}"></script>
+<link href="{% static 'css/datepicker.min.css' %}" rel="stylesheet" type="text/css">
+  <div class="right_col" role="main">
+    <div class="">
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Edit item</h2>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <br />
+              <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data" method="post" action="/reservedate/{{ id }}">
+                   {% csrf_token %}
+                    <input type="hidden" value="{{ id }}" name="id" id="t_id">
+                    <div class="form-group">
+                       <label for="middle-name" class="col-md-6 col-sm-6 col-xs-6 col-md-offset-4">Reserv date</label>
+                       <div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-4">
+                            <input type="hidden" id="date" name="reserv">
+                       </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-4">
+                          <button style="width: 300px; height: 60px; margin-top: 50px;" type="submit" class="btn btn-success">Save</button>
+                        </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+        $('#date').datepicker({
+            inline: true,
+            position: "right",
+            multipleDates: true,
+            todayButton: new Date(),
+            clearButton: true,
+		language: {
+		days: [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ],
+	    daysShort: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
+	    daysMin: [ "Su","Mo","Tu","We","Th","Fr","Sa" ],
+	    months: [ "January","February","March","April","May","June",
+			"July","August","September","October","November","December" ],
+    	monthsShort: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+			"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
+	    today: 'Today',
+	    clear: 'Clear',
+	    dateFormat: 'dd.mm.yyyy',
+	    timeFormat: 'hh:ii',
+	    firstDay: 1
+    },
+            dateFormat: "@"
+            });
+        var cal = $('#date').datepicker().data('datepicker')
+        var reserv = '{{ data }}';
+        if( reserv != ''){
+            var newreserv = reserv.split(',');
+            console.log(newreserv.length)
+            for (var i = 0; i < newreserv.length; i++) {
+                cal.selectDate(new Date(Number(newreserv[i])));
+            };
+        };
+  </script>
+{% endblock content %}
